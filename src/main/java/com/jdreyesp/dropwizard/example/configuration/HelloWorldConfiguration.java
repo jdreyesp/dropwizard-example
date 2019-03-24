@@ -1,0 +1,67 @@
+package com.jdreyesp.dropwizard.example.configuration;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.dropwizard.Configuration;
+import org.hibernate.validator.constraints.NotEmpty;
+
+public class HelloWorldConfiguration extends Configuration {
+
+    //Coming from YAML config. It sets the template used
+    @NotEmpty
+    private String template;
+
+    //Coming from YAML config. It sets the default name for this app
+    @NotEmpty
+    private String defaultName = "Stranger";
+
+    /*@Valid
+    @NotNull
+    private DataSourceFactory database = new DataSourceFactory();
+
+    @NotNull
+    private Map<String, Map<String, String>> viewRendererConfiguration = Collections.emptyMap();
+*/
+    @JsonProperty
+    public String getTemplate() {
+        return template;
+    }
+
+    @JsonProperty
+    public void setTemplate(String template) {
+        this.template = template;
+    }
+
+    @JsonProperty
+    public String getDefaultName() {
+        return defaultName;
+    }
+
+    @JsonProperty
+    public void setDefaultName(String defaultName) {
+        this.defaultName = defaultName;
+    }
+
+    /*public Template buildTemplate() {
+        return new Template(template, defaultName);
+    }
+
+    @JsonProperty("database")
+    public DataSourceFactory getDataSourceFactory() {
+        return database;
+    }
+
+    @JsonProperty("database")
+    public void setDataSourceFactory(DataSourceFactory dataSourceFactory) {
+        this.database = dataSourceFactory;
+    }
+
+    @JsonProperty("viewRendererConfiguration")
+    public Map<String, Map<String, String>> getViewRendererConfiguration() {
+        return viewRendererConfiguration;
+    }
+
+    @JsonProperty("viewRendererConfiguration")
+    public void setViewRendererConfiguration(Map<String, Map<String, String>> viewRendererConfiguration) {
+        this.viewRendererConfiguration = viewRendererConfiguration;
+    }*/
+}
